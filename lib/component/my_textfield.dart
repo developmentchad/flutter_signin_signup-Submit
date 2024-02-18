@@ -29,12 +29,12 @@ class MyTextField extends StatelessWidget {
               const EdgeInsets.symmetric(horizontal: 42, vertical: 20),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Colors.white),
             gapPadding: 10,
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(color: Colors.blue),
+            borderSide: const BorderSide(color: Colors.deepPurple),
             gapPadding: 10,
           ),
         ), //ใส่ข้อมูลได้

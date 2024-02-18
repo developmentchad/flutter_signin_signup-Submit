@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:onboarding_screen/screen/introduction_screen.dart';
+import 'package:onboarding_screen/screen/signin_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';//packageเก็บไว้ใน mobile memory
-import 'screen/home_screen.dart';
-
 
 bool show = true;//ใช้ global var(ทุกclassเรียกได้)ใช้ในการเปิดปิด onboarding_screen
 
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue,
       ),
       // home: IntroScreen(),//runหน้าแรก ใส่ constหลังจาก import home_screen.dart
-      home: show ? IntroScreen() : HomeScreen() , // short func() ของ if() else() โดย ถ้า show เป็น true ให้กระโดดไปหน้า introduction screen แต่ถ้า กด done ก็ else ไป home screen
+      home: show ? IntroScreen() : SignInScreen() , // short func() ของ if() else() โดย ถ้า show เป็น true ให้กระโดดไปหน้า introduction screen แต่ถ้า กด done ก็ else ไป home screen
     );
   }
 }

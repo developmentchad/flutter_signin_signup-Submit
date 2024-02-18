@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'home_screen.dart';
+import 'package:onboarding_screen/screen/signin_screen.dart';
 
 class IntroScreen extends StatelessWidget {
   IntroScreen({super.key}); //ขัดแย้งconst ให้ลบ const ทิ้ง
@@ -10,15 +11,16 @@ class IntroScreen extends StatelessWidget {
   final List<PageViewModel> pages = [
     PageViewModel(
       //Fix String กำหนดเป็น widget text กำหนด style ไม่ได้ ต้องมี title,body,footer
-      title: 'Step 1 Filling Your Data',
+      title: 'Welcome to Claw Craze!',
       body:
-          'สิ่งต่างๆ ที่จำเป็นต้องใช้ในกระบวนการหรือโครงการต่างๆ เช่น ในระบบการเรียนการสอนในชั้นเรียน อาจได้แก่ ครู นักเรียน ชั้นเรียน หลักสูตร ตารางสอน วิธีการสอน เป็นต้น ถ้าในเรื่องระบบหายใจ อาจได้แก่ จมูก ปอด กระบังลม อากาศ เป็นต้น',
+          "🕹️ Get ready for a world of excitement and skill as you enter the realm of Claw Craze! Are you ready to test your precision and grab fantastic prizes with our thrilling crane claw machines? Let the fun begin as you embark on a claw-tastic adventure!",
       footer: SizedBox(
         // ใส่ constไม่ได้ errorปุ่ม
         height: 45,
         width: 150,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.deepPurple[400],
             //Widget ปุ่มกด
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -26,13 +28,17 @@ class IntroScreen extends StatelessWidget {
             elevation: 8,
           ),
           onPressed: () {},
-          child: const Text("Let's Get Started!"),
+          child: Text("Let's Get Started!",
+          style: TextStyle(
+            color: Colors.deepPurple[200],
+          ),
+          ),
         ),
       ),
       image: const CircleAvatar(
         radius: 100,
         backgroundImage: AssetImage(
-          '../../assets/images/smartphone_man.png',
+          '../../assets/images/happy_boy.png',
         ),
       ),
       decoration: const PageDecoration(
@@ -49,27 +55,32 @@ class IntroScreen extends StatelessWidget {
       ),
     ),
     PageViewModel(
-      title: 'Step 2 Data Processing',
+      title: 'Master the Claw Control',
       body:
-          'การนำเอาสิ่งที่ป้อนเข้าไป มาจัดกระทำให้เกิดผลบรรลุตามวัตถุประสงค์ที่ต้องการ เช่น การสอนของครู หรือการให้นักเรียนทำกิจกรรม เป็นต้น',
+          "🦀 Before you dive into the prize-filled world, master the art of controlling the claw. Use the joystick to navigate and position the claw above your desired prize. Once you've got the perfect aim, press the button to lower the claw and attempt to grab your prize. It's all about timing and skill – can you become the ultimate Claw Master and snag the coolest rewards?",
       footer: SizedBox(
         height: 45,
         width: 150,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.deepPurple[400],
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
             elevation: 8,
           ),
           onPressed: () {},
-          child: const Text("Let's Get Started!"),
+          child: Text("Let's Get Started!",
+          style: TextStyle(
+            color: Colors.deepPurple[200],
+          ),
+          ),
         ),
       ),
       image: const CircleAvatar(
         radius: 100,
         backgroundImage: AssetImage(
-          '../../assets/images/smartphone_app.png',
+          '../../assets/images/crane_bear.png',
         ),
       ),
       decoration: const PageDecoration(
@@ -86,27 +97,32 @@ class IntroScreen extends StatelessWidget {
       ),
     ),
     PageViewModel(
-      title: 'Step 3 Get Results!',
+      title: 'Collect and Conquer',
       body:
-          'ผลที่ได้จากการกระทำในขั้นที่สอง ได้แก่ ผลสัมฤทธิ์ทางการเรียนของนักเรียน หรือผลงานของนักเรียน เป็นต้น',
+          "🎉 Now that you've honed your claw skills, it's time to collect amazing prizes! Navigate through a variety of claw machines, each filled with unique and exciting items. From toys to gadgets, the possibilities are endless. Rack up points, unlock new machines, and showcase your claw mastery. Are you ready to grab, collect, and win your way to the top of Claw Craze? Let the clawing adventure begin!",
       footer: SizedBox(
         height: 45,
         width: 150,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.deepPurple[400],
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
             elevation: 8,
           ),
           onPressed: () {},
-          child: const Text("Let's Get Started!"),
+          child: Text("Let's Get Started!",
+          style: TextStyle(
+            color: Colors.deepPurple[200],
+          ),
+          ),
         ),
       ),
       image: const CircleAvatar(
         radius: 100,
         backgroundImage: AssetImage(
-          '../../assets/images/programming_group.png',
+          '../../assets/images/crane_sad.png',
         ),
       ),
       decoration: const PageDecoration(
@@ -128,23 +144,55 @@ class IntroScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('On Boarding'),
+        backgroundColor: Colors.deepPurple[400],
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              '../../assets/images/crane_game_arm_yowai.png', 
+              width: 50, 
+              height: 50, 
+            ),
+            const SizedBox(width: 8.0),
+              Text("Claw Claze",
+                textAlign:TextAlign.center,
+                style:GoogleFonts.poppins(
+                  textStyle: Theme.of(context).textTheme.displayLarge,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  fontStyle: FontStyle.normal,
+                  color: Colors.deepPurple[200],
+                ),
+              ),
+          ],
+        ),
         centerTitle: true,
       ),
+
       body: IntroductionScreen(
+        globalBackgroundColor: Colors.deepPurple[400],
         //ต้องการ list เราก็ให้ pages var ไป
         pages: pages,
         showSkipButton: true, //ปุ่มskip
-        skip: const Text('Skip'),
+        skip: Text('Skip',
+          style: TextStyle(
+            color: Colors.deepPurple[200],
+          ),
+        ),
         showDoneButton: true, //showปุ่มdoneเมื่อถึงหน้าสุดท้ายของlist pages var
-        done: const Text('Done'),
+        done: Text('Done',
+          style: TextStyle(
+            color: Colors.deepPurple[200],
+          ),
+        ),
         showNextButton: true, //ปุ่มnextมีicon หัวลูกศร
-        next: const Icon(
+        next: Icon(
           Icons.arrow_forward,
           size: 25,
+          color: Colors.deepPurple[200],
         ),
-        onDone: () => onDone(
-            context), //ถ้าหน้าสุดท้ายกระโดดไปหน้า home_screen OnDone properties ต้องการ function onDone ซึ่งต้องไปสร้างเองก่อน โดยสร้างอยู่ในclassแต่นอกWidget
+        onDone: () => onDone(context), //ถ้าหน้าสุดท้ายกระโดดไปหน้า home_screen OnDone properties ต้องการ function onDone ซึ่งต้องไปสร้างเองก่อน โดยสร้างอยู่ในclassแต่นอกWidget
         curve: Curves.bounceOut,
         dotsDecorator: DotsDecorator(
           size: const Size(15, 15),
@@ -163,7 +211,7 @@ class IntroScreen extends StatelessWidget {
       context,
       MaterialPageRoute(
           //ใน flutterหน้าจะเป็นstackต้องออกถึงหน้าที่pushเข้าไป
-          builder: (context) => HomeScreen()),
+          builder: (context) => SignInScreen()),
     );
   }
 }
