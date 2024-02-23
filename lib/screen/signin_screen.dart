@@ -17,8 +17,10 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     //Scaffoldคือหน้าที่มีNav Bar
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: Colors.grey[300],
-appBar: AppBar(
+      appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.deepPurple[400],
         title: Row(
           mainAxisSize: MainAxisSize.min,
@@ -33,7 +35,7 @@ appBar: AppBar(
               Text("Claw Claze",
                 textAlign:TextAlign.center,
                 style:GoogleFonts.poppins(
-                  textStyle: Theme.of(context).textTheme.displayLarge,
+                  textStyle: Theme.of(context).textTheme.displayLarge,//จัดtextแบบใช้libraryเหมือน bootstrap tailwindcss
                   fontSize: 24,
                   fontWeight: FontWeight.w700,
                   fontStyle: FontStyle.normal,
@@ -44,33 +46,38 @@ appBar: AppBar(
         ),
         centerTitle: true,
       ),
-      body: Form(
-        child: Column(
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),//กำหนด padding แบบ manual
+      child: Form(
+        child: Column(//บน->ล่าง
           children: [
-            const SizedBox(
-              height: 20,
-            ),
+            // ลบ SizedBox ใช้ widget Spacer() ดีกว่า โดยใส่หัวท้ายเป็นการทำให้มันติดเหมือนfixตำแหน่ง
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            const Spacer(),//หัว-ท้าย
             Text("Hello, ready to get started?",
-                  textAlign:TextAlign.center,
-                  style:GoogleFonts.poppins(
-                    textStyle: Theme.of(context).textTheme.displayLarge,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
-                    fontStyle: FontStyle.normal,
-                  ),
-                ),
-            Text("Please sign in with your email and password.",
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.poppins(
-                    textStyle: Theme.of(context).textTheme.displaySmall,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w300,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
+              textAlign:TextAlign.center,
+              style:GoogleFonts.poppins(
+                textStyle: Theme.of(context).textTheme.displayLarge,
+                fontSize: 24,
+                fontWeight: FontWeight.w700,
+                fontStyle: FontStyle.normal,
+                color: Colors.deepPurple[400],
+              ),
+            ),
+            Text("\nPlease sign in with your email and password.\n",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                textStyle: Theme.of(context).textTheme.displaySmall,
+                fontSize: 16,
+                fontWeight: FontWeight.w300,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
             const SizedBox(
-              height: 20,
-            ),                
+              height: 30,
+            ),
             //เรียกmy_textfield.dart มีการร้องขอ parameter จาก required this.???
             MyTextField(
               controller: emailController,
@@ -91,8 +98,8 @@ appBar: AppBar(
               height: 20,
             ),
             Padding(padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+              child: Row(//Wrapด้วย Row แบบอัตโนมัติ
+                mainAxisAlignment: MainAxisAlignment.end,//ขวาสุด
                 children: [
                   TextButton(
                     onPressed: () {}, 
@@ -101,7 +108,7 @@ appBar: AppBar(
                       style: GoogleFonts.poppins(
                         textStyle: Theme.of(context).textTheme.displaySmall,
                         fontSize: 16,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w700,
                         fontStyle: FontStyle.italic,
                         color: Colors.deepPurple[400],
                       ),
@@ -111,55 +118,60 @@ appBar: AppBar(
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 25,
             ),
             //เรียกmy_button.dart มีการร้องขอ parameter จาก required this.???
             MyButton(onTap: signInWithEmailAndPassword, hinText: 'Sign In'),
             const SizedBox(
-              height: 20,
+              height: 30,
             ),
-            // or continue with            
+            Padding(//สำคัญมาก Wrap Row ด้วย Padding
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),//จัดให้ห่างตามแนวนอน 25.0
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [ //listรายการในrowจากleft to right
+                  Expanded(
+                    child: Divider(
+                      thickness: 0.5,
+                      color: Colors.deepPurple.shade400,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),//Wrap text ด้วย padding ซ้าย15 ขวา15สมมาตรทั้งสองฝั่ง
+                    child: Text(
+                      'Or continue with',
+                      style: GoogleFonts.poppins(
+                        textStyle :Theme.of(context).textTheme.displaySmall,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.deepPurple.shade800,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(//Wrap ด้วย Widget และ rename จาก Widget เป็น Expanded
+                      thickness: 0.5,
+                      color: Colors.deepPurple.shade400,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             const SizedBox(
               height: 20,
             ),
-            Padding(padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Divider(
-                    thickness: 0.5,
-                    color: Colors.grey.shade400,
-                  ),
-                ),
-                Padding(padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Text(
-                    'Or continue with',
-                    style: TextStyle(color: Colors.grey.shade800),
-                  ),
-                ),
-                Expanded(
-                  child: Divider(
-                  thickness: 0.5,
-                  color: Colors.grey.shade400,
-                ),
-                ),
-              ],
-            ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),            
             const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center, //ข้อความอยู่ row ตรงกลาง
               children: [
-                MyIconButton(imagPath: '../../assets/images/google_icon.png'),
+                MyIconButton(imagPath: '../../assets/images/google_icon.png',
+                ),
                 SizedBox(
                   width: 10,
                 ),
                 MyIconButton(imagPath: '../../assets/images/apple_icon.png'),
               ],
             ),
-            // Not a member
             const SizedBox(
               height: 30,
             ),           
@@ -169,39 +181,42 @@ appBar: AppBar(
                 Text(
                   'Not a member?',
                   style: GoogleFonts.poppins(
-                    textStyle: Theme.of(context).textTheme.displaySmall,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
+                    textStyle: Theme.of(context).textTheme.displayMedium,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
                     fontStyle: FontStyle.italic,
                   ),
                 ),
-                const SizedBox(
-                  width: 1,
+                const SizedBox(//ห่างแนวนอนไป 2
+                  width: 2,
                 ),
+                // TextButton(onPressed: () {เขียนโค๊ดตรงนี้เพื่อกระโดดไปหน้าอื่น}, child: Text('Register now'))=> นี่เป็นพื้นฐาน
                 TextButton(
                   onPressed: () {
                     Navigator.push(
                       context, 
                       MaterialPageRoute(
                         builder: (context) => SignUpScreen(),
-                        ),
-                      );
+                      ),
+                    );
                   }, 
                   child: Text(
                     'Register now.',
                     style: GoogleFonts.poppins(
-                      textStyle: Theme.of(context).textTheme.displaySmall,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+                      textStyle: Theme.of(context).textTheme.displayMedium,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
                       fontStyle: FontStyle.italic,
                       color: Colors.deepPurple[400],
                     ),
                   ),
                 ),
               ],
-            ),    
+            ),
+            const Spacer(), //Widgetมหัศจรรย์
           ],
         ),
+      ),
       ),
     );
   }

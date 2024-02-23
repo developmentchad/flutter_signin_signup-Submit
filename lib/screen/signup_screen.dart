@@ -18,8 +18,10 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     //Scaffoldคือหน้าที่มีNav Bar
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: Colors.grey[300],
-appBar: AppBar(
+      appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.deepPurple[400],
         title: Row(
           mainAxisSize: MainAxisSize.min,
@@ -45,34 +47,36 @@ appBar: AppBar(
         ),
         centerTitle: true,
       ),
-      body: Form(
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),//กำหนด padding แบบ manual
+      child: Form(
         child: Column(
           children: [
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Welcome to our community.",
+            // แก้ const เป็น Spacer()
+            // const SizedBox(
+            //   height: 20,
+            const Spacer(),
+            Text("Welcome to our community.",
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
                 textStyle: Theme.of(context).textTheme.displayLarge,
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
                 fontStyle: FontStyle.normal,
+                color: Colors.deepPurple[400],
               ),
             ),
-            Text(
-              "\nTo get started, please provide your information and create an account.\n",
+            Text("\nTo get started, please provide your information and create an account.\n",
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
                 textStyle: Theme.of(context).textTheme.displaySmall,
                 fontSize: 16,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w300,
                 fontStyle: FontStyle.italic,
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 30,
             ),             
             //เรียกmy_textfield.dart มีการร้องขอ parameter จาก required this.???
             MyTextField(
@@ -109,7 +113,7 @@ appBar: AppBar(
               labelText: "Re-password",
             ),                 
             const SizedBox(
-              height: 30,
+              height: 25,
             ),
             //เรียกmy_button.dart มีการร้องขอ parameter จาก required this.???
             MyButton(onTap: createUserWithEmailAndPassword, hinText: 'Sign Up'),
@@ -122,9 +126,9 @@ appBar: AppBar(
                 Text(
                   'Have a member?',
                   style: GoogleFonts.poppins(
-                    textStyle: Theme.of(context).textTheme.displaySmall,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
+                    textStyle: Theme.of(context).textTheme.displayMedium,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
                     fontStyle: FontStyle.italic,
                   ),
                 ),
@@ -143,9 +147,9 @@ appBar: AppBar(
                   child: Text(
                     'Sign in.',
                     style: GoogleFonts.poppins(
-                      textStyle: Theme.of(context).textTheme.displaySmall,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+                      textStyle: Theme.of(context).textTheme.displayMedium,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
                       fontStyle: FontStyle.italic,
                       color: Colors.deepPurple[400],
                     ),
@@ -153,8 +157,10 @@ appBar: AppBar(
                 ),
               ],
             ),
+            const Spacer(),
           ],
         ),
+      ),
       ),
     );
   }
